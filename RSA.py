@@ -71,7 +71,6 @@ def generate_rsa_key(k, e, p = None, q = None):
 
 
 def encrypt_random_key_rsa(public_k):
-    ##K = sha256(str(r).encode()).hexdigest()
     n = public_k[0]
     e = public_k[1]
     k = math.floor(math.log(n, 2))
@@ -80,14 +79,12 @@ def encrypt_random_key_rsa(public_k):
     return (c,r)
 
 def encrypt_key_rsa(public_k, key_number):
-    ##K = sha256(str(r).encode()).hexdigest()
     n = public_k[0]
     e = public_k[1]
     c = (key_number ** e) % n
     return (c)
 
 def decrypt_key_rsa(private_k, c):
-    #K = sha256(str((c ** (1 / e)) % n).encode()).hexdigest()
     n = private_k[0]
     d = private_k[1]
     plaintext = (c**d)%n
